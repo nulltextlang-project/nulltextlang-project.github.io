@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nulltextlang - Язык Замены Бессмысленных Текстов</title>
+    <!-- Подключение шрифта с Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: 'Press Start 2P', monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            font-size: 2em;
+            color: #00FF00;
+            border-bottom: 2px solid #00FF00;
+        }
+
+        .menu {
+            background-color: #111;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            border-bottom: 2px solid #00FF00;
+        }
+
+        .menu a {
+            color: #00FF00;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 1.1em;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        .menu a:hover {
+            background-color: #333;
+        }
+
+        .content {
+            margin: 20px;
+			margin-bottom: 150px;
+        }
+
+        .section {
+            border: 1px dashed #00FF00;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section pre {
+            background-color: black;
+            color: #00FF00;
+            padding: 20px;
+            border-radius: 5px;
+			font-family: 'Press Start 2P', monospace;
+            font-size: 0.6em;
+            overflow: auto;
+            line-height: 1.6em;
+        }
+		
+		.section p {
+		    font-size: 0.9em;
+		    text-align: justify;
+		}
+		
+        code {
+            color: #00FF00;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #111;
+            color: #00FF00;
+			font-size: 0.6em;
+			text-align: justify;
+            border-top: 2px solid #00FF00;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+		
+		.footer p {
+		    max-width: 90%;
+            margin: 0 auto;
+            text-align: justify;
+		}
+		
+		.footer textarea {
+            width: 90%;
+            background-color: #111;
+            color: #00FF00;
+            border: none;
+            padding: 10px;
+            font-size: 0.9em;
+            font-family: 'Press Start 2P', monospace;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        .footer-text {
+           width: 100%;
+           background-color: #111;
+           color: #00FF00;
+           padding: 10px;
+           font-size: 0.9em;
+           font-family: 'Press Start 2P', monospace;
+           white-space: pre-wrap;
+           word-wrap: break-word;
+           box-sizing: border-box;
+		   width: 90%;
+		   margin: 0 auto;
+        }
+		
+		.footer-link {
+           color: #00FF00;
+           text-decoration: none;
+           font-size: 1.2em;
+           font-family: 'Press Start 2P', monospace;
+           border-bottom: 1px dotted #00FF00; /* Тонкая линия под ссылкой */
+           transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+           color: #FF6347; /* При наведении цвет изменится */
+           border-bottom: 1px solid #FF6347; /* Линия под ссылкой будет ярче */
+        }
+		
+        .neon-border {
+            border: 2px solid #00FF00;
+            padding: 10px;
+            text-align: center;
+            background-color: black;
+            color: #00FF00;
+            font-size: 1.2em;
+        }
+
+		.lang-button {
+            padding: 8px 12px;
+            font-size: 1.1em;
+            margin: 5px;
+            background-color: #222;
+            color: #00FF00;
+            border: 2px solid #00FF00;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .lang-button:hover {
+            background-color: #333;
+        }
+		
+		.info-banner {
+		    text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #00FF00;
+            font-size: 0.6em;
+            padding: 2px 10px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            font-family: 'Press Start 2P', monospace;
+		}
+
+        .info-banner p {
+            margin: 0 auto;
+			width: 90%;
+			text-align: justify;
+        }
+
+        .close-btn {
+            background-color: #00FF00;
+            color: black;
+            border: none;
+            padding: 5px 15px;
+            font-size: 1em;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: 'Press Start 2P', monospace;
+        }
+
+        .close-btn:hover {
+            background-color: #00cc00;
+        }
+    </style>
+</head>
+<body>
+<div class="info-banner">
+    <p>Этот сайт не применяет куки-файлы. Администрация сайта не осуществляет сбор, обработку или контроль за вашими персональными данными. Все технические процессы работы сайта ограничены его контентом, и администрация не использует, а также не имеет доступа к инструментам для сбора пользовательской информации. Подробнее об условиях использования сайта вы можете узнать в соответствующем разделе, доступном по ссылке в нижней части страницы.</p>
+    <button class="close-btn">Ок</button>
+</div>
+
+    <script>
+
+        const closeButton = document.querySelector('.close-btn');
+        const infoBanner = document.querySelector('.info-banner');
+
+
+        closeButton.addEventListener('click', function() {
+            infoBanner.style.display = 'none';
+        });
+    </script>
+	
+<div class="header">
+    <h1>Nulltextlang</h1>
+    <p>Язык для передачи бессмысленных текстов</p>
+</div>
+
+<div class="menu">
+	<a href="index_ru.html">Главная</a>
+    <a href="about_ru.html">О языке</a>
+    <a href="faq_ru.html">ЧаВо</a>
+	<a href="index.html" class="lang-button">EN</a>
+    <a href="index_ru.html" class="lang-button">RU</a>
+</div>
+
+<div class="content">
+    <div class="section">
+        <h2>Часто задаваемые вопросы</h2>
+    </div>
+<div class="section">
+    <h3>Что такое Nulltextlang?</h3>
+    <p>Nulltextlang — это язык, предназначенный для избавления мира от бессмысленных текстов и разговоров. Он позволяет заменять пустую информацию на короткие, логичные конструкции, которые легко произносить и запомнить. Это как искусство очищения текста от шума — оставляем только форму и эмоции, но без лишнего содержания.</p>
+</div>
+
+<div class="section">
+    <h3>Как работает язык Nulltextlang?</h3>
+    <p>Язык работает на принципах замены букв в базовых словах, а также добавления суффиксов для выражения времени, эмоций и других оттенков. Каждое слово несет минимальное значение, но оно способно передавать чувство и контекст, очищая разговор от лишней "воды". Это как устранять мусор из текста, оставляя только суть.</p>
+</div>
+
+<div class="section">
+    <h3>Можно ли использовать Nulltextlang для общения?</h3>
+    <p>Да, можно! Конечно, для того чтобы понимать друг друга, необходимо согласовать определенные принципы. Но в отличие от обычных языков, Nulltextlang не требует детальной проработки смысла. Это не разговор о содержании, а о том, как выразить простую и пустую мысль.</p>
+</div>
+
+<div class="section">
+    <h3>Как узнать, что мой текст на Nulltextlang правильный?</h3>
+    <p>Текст на Nulltextlang правильный, если он сохраняет структуру, но лишен явного смысла. Если фраза не имеет логики, но вызывает понимание того, что в ней что-то есть — вы на правильном пути. Главное правило: минимализм и абстракция.</p>
+</div>
+
+<div class="section">
+    <h3>Какой смысл в этом языке?</h3>
+    <p>Основная цель Nulltextlang — это очистить мир от текстов, которые не несут ценности. Вместо того чтобы говорить много и долго, мы сокращаем разговор до его сути, при этом оставляем пространство для интерпретации и эмоций. Этот язык помогает избавиться от избыточных фраз и сосредоточиться на самом важном — на форме и настроении.</p>
+</div>
+
+<div class="section">
+    <h3>Где можно использовать язык Nulltextlang?</h3>
+    <p>Nulltextlang можно использовать везде, где нужно передать пустую информацию, но с определённым настроением. Это идеальный язык для социальных сетей, шуток, мемов и даже для общения в ситуациях, где бессмысленные разговоры уже стали нормой. Почему бы не вставить пару фраз Nulltextlang в любой беседе, чтобы добавить немного абсурда и юмора? С ним даже самые обычные разговоры могут стать гораздо более интересными и загадочными! <strong>Не забудьте пояснить, что это сказано на языке Nulltextlang</strong>, или же предоставьте ссылку на материалы, чтобы собеседники могли понять, что именно вы имеете в виду.</p>
+</div>
+
+<div class="section">
+    <h3>Можно ли научиться говорить на Nulltextlang?</h3>
+    <p>Конечно! Но это не тот язык, который учат по правилам. Научиться говорить на Nulltextlang — это скорее процесс осознания, что можно выражать мысли проще и короче. Чем меньше слов, тем больше свободы. Начните с простых фраз, таких как "ot" или "at", и постепенно добавляйте суффиксы для выражения эмоций и настроений.</p>
+</div>
+
+<div class="section">
+    <h3>Какие фразы стоит использовать в повседневной жизни?</h3>
+    <p>Попробуйте такие фразы, как <strong>"Zo ot!"</strong> — "Этот нулевой текст просто великолепен!" или <strong>"Ta atz"</strong> — "Когда-то это был саркастический бред". Эти фразы легко произносятся, но в них заключена определенная атмосфера, которую вы хотите передать.</p>
+</div>
+
+<div class="section">
+    <h3>Что делать, если собеседник не понимает, что я говорю?</h3>
+    <p>Скажите "atq" и сделайте загадочное лицо. В конце концов, вы же используете Nulltextlang, где смысл не важен, а важна сама структура и форма общения. Если собеседник не понял, это не ваша проблема, это его недоразумение!</p>
+</div>
+
+    <div class="footer">
+        <p>&copy; 2024 Nulltextlang Project. Все права защищены. Материалы сайта распространяются по лицензии CC BY-NC-SA 4.1.</p>
+        <p><a href="rules_ru.html" class="footer-link">Условия использования </a></p>
+    </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nulltextlang - The Language for Replacing Meaningless Texts</title>
+    <!-- Подключение шрифта с Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: 'Press Start 2P', monospace;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            font-size: 2em;
+            color: #00FF00;
+            border-bottom: 2px solid #00FF00;
+        }
+
+        .menu {
+            background-color: #111;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            border-bottom: 2px solid #00FF00;
+        }
+
+        .menu a {
+            color: #00FF00;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 1.1em;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        .menu a:hover {
+            background-color: #333;
+        }
+
+        .content {
+            margin: 20px;
+			margin-bottom: 150px;
+        }
+
+        .section {
+            border: 1px dashed #00FF00;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .section pre {
+            background-color: black;
+            color: #00FF00;
+            padding: 20px;
+            border-radius: 5px;
+			font-family: 'Press Start 2P', monospace;
+            font-size: 0.6em;
+            overflow: auto;
+            line-height: 1.6em;
+        }
+		
+		.section p {
+		    font-size: 0.9em;
+		    text-align: justify;
+		}
+		
+        code {
+            color: #00FF00;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #111;
+            color: #00FF00;
+			font-size: 0.6em;
+			text-align: justify;
+            border-top: 2px solid #00FF00;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+		
+		.footer p {
+		    max-width: 90%;
+            margin: 0 auto;
+            text-align: justify;
+		}
+		
+		.footer textarea {
+            width: 90%;
+            background-color: #111;
+            color: #00FF00;
+            border: none;
+            padding: 10px;
+            font-size: 0.9em;
+            font-family: 'Press Start 2P', monospace;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        .footer-text {
+           width: 100%;
+           background-color: #111;
+           color: #00FF00;
+           padding: 10px;
+           font-size: 0.9em;
+           font-family: 'Press Start 2P', monospace;
+           white-space: pre-wrap;
+           word-wrap: break-word;
+           box-sizing: border-box;
+		   width: 90%;
+		   margin: 0 auto;
+        }
+		
+		.footer-link {
+           color: #00FF00;
+           text-decoration: none;
+           font-size: 1.2em;
+           font-family: 'Press Start 2P', monospace;
+           border-bottom: 1px dotted #00FF00; /* Тонкая линия под ссылкой */
+           transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+           color: #FF6347; /* При наведении цвет изменится */
+           border-bottom: 1px solid #FF6347; /* Линия под ссылкой будет ярче */
+        }
+		
+        .neon-border {
+            border: 2px solid #00FF00;
+            padding: 10px;
+            text-align: center;
+            background-color: black;
+            color: #00FF00;
+            font-size: 1.2em;
+        }
+
+		.lang-button {
+            padding: 8px 12px;
+            font-size: 1.1em;
+            margin: 5px;
+            background-color: #222;
+            color: #00FF00;
+            border: 2px solid #00FF00;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .lang-button:hover {
+            background-color: #333;
+        }
+		
+		.info-banner {
+		    text-align: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #00FF00;
+            font-size: 0.6em;
+            padding: 2px 10px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            font-family: 'Press Start 2P', monospace;
+		}
+
+        .info-banner p {
+            margin: 0 auto;
+			width: 90%;
+			text-align: justify;
+        }
+
+        .close-btn {
+            background-color: #00FF00;
+            color: black;
+            border: none;
+            padding: 5px 15px;
+            font-size: 1em;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-family: 'Press Start 2P', monospace;
+        }
+
+        .close-btn:hover {
+            background-color: #00cc00;
+        }
+    </style>
+</head>
+<body>
+<div class="info-banner">
+    <p>This website does not use cookies. The site administration does not collect, process, or monitor your personal data. All technical processes of the website are limited to its content, and the administration neither uses nor has access to tools for gathering user information. You can learn more about the terms of use in the relevant section available via the link at the bottom of the page.</p>
+    <button class="close-btn">Ок</button>
+</div>
+
+    <script>
+
+        const closeButton = document.querySelector('.close-btn');
+        const infoBanner = document.querySelector('.info-banner');
+
+
+        closeButton.addEventListener('click', function() {
+            infoBanner.style.display = 'none';
+        });
+    </script>
+	
+<div class="header">
+    <h1>Nulltextlang</h1>
+    <p>A language for conveying meaningless texts.</p>
+</div>
+
+<div class="menu">
+	<a href="index.html">Home</a>
+    <a href="about.html">About the Language</a>
+    <a href="faq.html">FAQ</a>
+	<a href="index.html" class="lang-button">EN</a>
+    <a href="index_ru.html" class="lang-button">RU</a>
+</div>
+
+<div class="content">
+    <div class="section">
+        <h2>Terms of Use</h2>
+        <p>© 2024 Nulltexlang Project. All rights reserved.</p>
+        <p>All materials on the site are licensed under the CC BY-NC-SA 4.0 license (which allows the use, adaptation, and distribution of materials with proper attribution, but they cannot be used for commercial purposes. Any derivative works must be licensed similarly, and in case of modifications or adaptations, it must be indicated that the materials were changed from the original).</p>
+        <p>The Nulltextlang language and associated materials are provided "as is," without any warranties. The developers and contributors to the project are not responsible for any consequences of their use. Any resemblance to real names, titles, brands, or other designations is purely coincidental. The project is not intended to offend, insult, or harm; its goal is solely the creative exploration and development of a minimalist language concept to replace meaningless texts. The language developer and project participants do not support or promote any political, religious, or social beliefs. This project is purely a creative idea dedicated to the development of language and the study of communication possibilities, without attachment to any ideology.</p>
+        <p>All ideas and concepts underlying the development of the Nulltextlang language are the result of the independent creative process of its developer and are not based on the works of other authors (no prior research of existing projects was conducted). The developer respects the work of other artificial language creators and states that in the case of any accidental similarity of individual elements or ideas with other projects, all rights and priorities remain with their original authors.</p>
+        <p>The Nulltextlang language is freely available for use and distribution without any restrictions. It can be used for communication, creating texts, and included in projects, books, games, and any other activities.</p>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Nulltexlang Project. All rights reserved. Site materials are licensed under CC BY-NC-SA 4.1.</p>
+        <p><a href="rules.html" class="footer-link">Terms of Use</a></p>
+    </div>
+
+    </div>
+</body>
+</html>
